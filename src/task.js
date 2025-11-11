@@ -6,7 +6,8 @@ class Task {
         this.description = description;
         this.status = 'todo';
         this.createdAt = new Date();
-        this.priority = 'medium'; // Добавляем приоритет по умолчанию
+        this.priority = 'medium';
+        this.labels = []; // Добавляем массив для меток
     }
 
     updateStatus(status) {
@@ -16,7 +17,6 @@ class Task {
         }
     }
 
-    // Новый метод для установки приоритета
     setPriority(priority) {
         const validPriorities = ['low', 'medium', 'high', 'urgent'];
         if (validPriorities.includes(priority)) {
@@ -24,6 +24,13 @@ class Task {
             return true;
         }
         return false;
+    }
+
+    // Новый метод для добавления меток
+    addLabel(label) {
+        if (label && !this.labels.includes(label)) {
+            this.labels.push(label);
+        }
     }
 }
 
