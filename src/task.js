@@ -6,6 +6,7 @@ class Task {
         this.description = description;
         this.status = 'todo';
         this.createdAt = new Date();
+        this.priority = 'medium'; // Добавляем приоритет по умолчанию
     }
 
     updateStatus(status) {
@@ -13,6 +14,16 @@ class Task {
         if (validStatuses.includes(status)) {
             this.status = status;
         }
+    }
+
+    // Новый метод для установки приоритета
+    setPriority(priority) {
+        const validPriorities = ['low', 'medium', 'high', 'urgent'];
+        if (validPriorities.includes(priority)) {
+            this.priority = priority;
+            return true;
+        }
+        return false;
     }
 }
 
